@@ -57,6 +57,14 @@
           >
             Launch Career
           </h2>
+          <div class="ml-auto pr-15">
+            <button
+              id="add-task-btn"
+              class="ml-15 font-bold text-primary-color text-sm bg-[#635FC7] px-6 py-4 rounded-3xl"
+            >
+              + Add New Task
+            </button>
+          </div>
         </div>
       </header>
 
@@ -161,6 +169,75 @@
             >
             <select
               id="modal-status"
+              class="font-medium text-sm leading-6 text-primary-font-color rounded-sm border border-border-color p-2"
+            >
+              <option value="todo">Todo</option>
+              <option value="doing">Doing</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <dialog
+      id="add-modal"
+      class="backdrop:bg-black/50 fixed inset-0 m-auto max-w-md w-[90vw] rounded-lg p-0 border-0"
+    >
+      <div class="w-[90vw] max-w-md bg-white p-6 rounded-lg shadow-xl">
+        <form>
+          <!-- Heading of modal and close button  -->
+          <div class="flex">
+            <h1 class="font-bold mr-auto text-lg text-primary-font-color mb-4">
+              Task
+            </h1>
+            <button
+              type="button"
+              id="close-modal"
+              class="flex ml-auto text-2xl text-[#EA5555] place-content-start items-start"
+            >
+              &times;
+            </button>
+          </div>
+          <!-- task title and input  -->
+          <div class="flex flex-col gap-1 mb-4">
+            <label
+              for="add-modal-title"
+              class="text-secondary-font-color text-xs font-bold"
+              >Title</label
+            >
+            <input
+              id="add-modal-title"
+              placeholder="e.g. Take chilled break"
+              class="font-medium text-sm leading-6 text-primary-font-color rounded-sm border border-border-color p-2"
+              type="text"
+            />
+          </div>
+          <!-- task description and input  -->
+          <div class="flex flex-col gap-1 mb-4">
+            <label
+              for="add-modal-description"
+              class="text-secondary-font-color text-xs font-bold"
+              >Description</label
+            >
+            <textarea
+              class="font-medium text-sm leading-6 text-primary-font-color rounded-sm border border-border-color p-2"
+              name=""
+              id="add-modal-description"
+              placeholder="e.g Pet your dog, have a cup of coffee, 
+dance to your favourite song and come 
+back to crush this challenge."
+            ></textarea>
+          </div>
+          <!-- task status and select box  -->
+          <div class="flex flex-col gap-1 mb-4">
+            <label
+              for="add-modal-status"
+              class="text-secondary-font-color text-xs font-bold"
+              >Status</label
+            >
+            <select
+              id="add-modal-status"
               class="font-medium text-sm leading-6 text-primary-font-color rounded-sm border border-border-color p-2"
             >
               <option value="todo">Todo</option>

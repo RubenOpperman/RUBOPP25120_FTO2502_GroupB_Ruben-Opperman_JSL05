@@ -50,6 +50,8 @@ const descriptionInput = document.getElementById("modal-description");
 const statusSelect = document.getElementById("modal-status");
 const closeModalBtn = document.getElementById("close-modal");
 
+const addModal = document.getElementById("add-modal");
+
 let selectedTask = null;
 
 /**
