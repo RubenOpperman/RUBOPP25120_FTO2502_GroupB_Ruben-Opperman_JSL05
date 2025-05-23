@@ -41,6 +41,14 @@ const initialTasks = [
   },
 ];
 
+// localStorage.clear();
+
+let savedTasks = JSON.parse(localStorage.getItem("tasks"));
+if (!savedTasks) {
+  localStorage.setItem("tasks", JSON.stringify(initialTasks));
+  savedTasks = initialTasks;
+}
+
 const todoContainer = document.getElementById("todo-container");
 const doingContainer = document.getElementById("doing-container");
 const doneContainer = document.getElementById("done-container");
@@ -51,6 +59,15 @@ const statusSelect = document.getElementById("modal-status");
 const closeModalBtn = document.getElementById("close-modal");
 
 const addModal = document.getElementById("add-modal");
+const addTaskBtn = document.getElementById("add-task-btn");
+const closeAddModalBtn = document.getElementById("close-add-modal");
+const saveNewTask = document.getElementById("save-new-task");
+
+const NewTaskTitleInput = document.getElementById("add-modal-title");
+const NewTaskDescriptionInput = document.getElementById(
+  "add-modal-description"
+);
+const NewTaskStatusSelect = document.getElementById("add-modal-status");
 
 let selectedTask = null;
 
@@ -79,6 +96,35 @@ function closeModal() {
   descriptionInput.value = "";
   statusSelect.value = "";
 }
+
+function openAddModal() {
+  addModal.showModal();
+}
+function closeAddModal() {
+  addModal.close();
+}
+
+addTaskBtn.addEventListener("click", () => openAddModal());
+closeAddModalBtn.addEventListener("click", closeAddModal);
+
+function addTask(newTask) {
+  savedTasks.push(newTask);
+  localStorage.setItem("tasks", JSON.stringify(savedTasks));
+}
+
+saveNewTask.addEventListener("click", () => {
+  const newTask = {
+    id: savedTasks.length + 1,
+    title: NewTaskTitleInput.value,
+    description: NewTaskDescriptionInput.value,
+    status: NewTaskStatusSelect.value,
+  };
+
+  addTask(newTask);
+
+  closeAddModal();
+});
+
 /**
  * This function takes in an array and sorts the tasks with the status todo and displays them dynamically.
  * @param {array} tasks -array of objects.
@@ -167,6 +213,6 @@ function loadDoneTasks(tasks) {
 
 closeModalBtn.addEventListener("click", closeModal);
 
-loadTodoTasks(initialTasks);
-loadDoingTasks(initialTasks);
-loadDoneTasks(initialTasks);
+loadTodoTasks(savedTasks);
+loadDoingTasks(savedTasks);
+loadDoneTasks(savedTasks);
