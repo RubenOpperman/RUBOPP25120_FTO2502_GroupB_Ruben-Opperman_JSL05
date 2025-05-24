@@ -41,7 +41,7 @@ const initialTasks = [
   },
 ];
 
-// storing in local storage
+// store in local storage
 let savedTasks = JSON.parse(localStorage.getItem("tasks"));
 if (!savedTasks) {
   localStorage.setItem("tasks", JSON.stringify(initialTasks));
