@@ -41,8 +41,7 @@ const initialTasks = [
   },
 ];
 
-// localStorage.clear();
-
+// storing in local storage
 let savedTasks = JSON.parse(localStorage.getItem("tasks"));
 if (!savedTasks) {
   localStorage.setItem("tasks", JSON.stringify(initialTasks));
@@ -96,10 +95,16 @@ function closeModal() {
   descriptionInput.value = "";
   statusSelect.value = "";
 }
-
+/**
+ * this function opens the modal to create a new task
+ */
 function openAddModal() {
   addModal.showModal();
 }
+
+/**
+ * This function closes the modal that appears if you want to create a new task
+ */
 function closeAddModal() {
   addModal.close();
 }
@@ -107,11 +112,18 @@ function closeAddModal() {
 addTaskBtn.addEventListener("click", () => openAddModal());
 closeAddModalBtn.addEventListener("click", closeAddModal);
 
+/**
+ * This function adds new task to the local storage
+ * @param {object} newTask - an opject that contains id title description and status
+ */
 function addTask(newTask) {
   savedTasks.push(newTask);
   localStorage.setItem("tasks", JSON.stringify(savedTasks));
 }
 
+/**
+ * This function retrieves all the information given to store it in an object
+ */
 saveNewTask.addEventListener("click", () => {
   const newTask = {
     id: savedTasks.length + 1,
