@@ -211,6 +211,16 @@ function loadDoneTasks(tasks) {
   });
 }
 
+const updateBtnText = () => {
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    addTaskBtn.innerText = "+";
+  } else {
+    addTaskBtn.innerText = "+ Add New Task";
+  }
+};
+updateBtnText();
+window.addEventListener("resize", updateBtnText);
+
 closeModalBtn.addEventListener("click", closeModal);
 
 loadTodoTasks(savedTasks);
